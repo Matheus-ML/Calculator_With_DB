@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="361.0" style="-fx-background-color: #2b2a2a;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculadorakz.HelloController">
+   <children>
+      <TextField fx:id="txtResults" alignment="CENTER_RIGHT" layoutX="17.0" layoutY="29.0" prefHeight="51.0" prefWidth="327.0">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font></TextField>
+      <Button layoutX="18.0" layoutY="403.0" mnemonicParsing="false" onAction="#buttonPoint" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-button" stylesheets="@style.css" text=".">
+         <font>
+            <Font name="Cloister Black Light" size="24.0" />
+         </font></Button>
+      <Button layoutX="103.0" layoutY="403.0" mnemonicParsing="false" onAction="#buttonZero" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-button" stylesheets="@style.css" text="0">
+         <font>
+            <Font name="Cloister Black Light" size="24.0" />
+         </font></Button>
+      <Button alignment="CENTER" layoutX="188.0" layoutY="403.0" mnemonicParsing="false" onAction="#buttonEqual" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-button" stylesheets="@style.css" text="=">
+         <font>
+            <Font name="Cloister Black Light" size="24.0" />
+         </font></Button>
+      <Button layoutX="273.0" layoutY="342.0" mnemonicParsing="false" onAction="#buttonSub" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-buttonOP" stylesheets="@style.css" text="-">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
+      <Button layoutX="273.0" layoutY="280.0" mnemonicParsing="false" onAction="#buttonMulti" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-buttonOP" stylesheets="@style.css" text="*">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
+      <Button layoutX="273.0" layoutY="402.0" mnemonicParsing="false" onAction="#buttonSum" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-buttonOP" stylesheets="@style.css" text="+">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
+      <Button layoutX="273.0" layoutY="216.0" mnemonicParsing="false" onAction="#buttonDiv" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-buttonOP" stylesheets="@style.css" text="/">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
+      <Button layoutX="18.0" layoutY="343.0" mnemonicParsing="false" onAction="#buttonOne" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-button" stylesheets="@style.css" text="1">
+         <font>
+            <Font name="Cloister Black Light" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="103.0" layoutY="343.0" mnemonicParsing="false" onAction="#buttonTwo" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-button" stylesheets="@style.css" text="2">
+         <font>
+            <Font name="Cloister Black Light" size="24.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="188.0" layoutY="343.0" mnemonicParsing="false" onAction="#buttonThree" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-button" stylesheets="@style.css" text="3">
+         <font>
+            <Font name="Cloister Black Light" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="18.0" layoutY="281.0" mnemonicParsing="false" onAction="#buttonFour" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-button" stylesheets="@style.css" text="4">
+         <font>
+            <Font name="Cloister Black Light" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="103.0" layoutY="281.0" mnemonicParsing="false" onAction="#buttonFive" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-button" stylesheets="@style.css" text="5">
+         <font>
+            <Font name="Cloister Black Light" size="24.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="188.0" layoutY="281.0" mnemonicParsing="false" onAction="#buttonSix" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-button" stylesheets="@style.css" text="6">
+         <font>
+            <Font name="Cloister Black Light" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="18.0" layoutY="217.0" mnemonicParsing="false" onAction="#buttonSeven" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-button" stylesheets="@style.css" text="7">
+         <font>
+            <Font name="Cloister Black Light" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="103.0" layoutY="217.0" mnemonicParsing="false" onAction="#buttonEight" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-button" stylesheets="@style.css" text="8">
+         <font>
+            <Font name="Cloister Black Light" size="24.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="188.0" layoutY="217.0" mnemonicParsing="false" onAction="#buttonNine" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-button" stylesheets="@style.css" text="9">
+         <font>
+            <Font name="Cloister Black Light" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="188.0" layoutY="157.0" mnemonicParsing="false" onAction="#buttonC" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-buttonOP" stylesheets="@style.css" text="C">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <TextField fx:id="posteriorNumber" alignment="CENTER_RIGHT" layoutX="187.0" layoutY="94.0" prefHeight="49.0" prefWidth="156.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></TextField>
+      <Button layoutX="18.0" layoutY="157.0" mnemonicParsing="false" onAction="#buttonPow" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-buttonOP" stylesheets="@style.css" text="x²">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="103.0" layoutY="157.0" mnemonicParsing="false" onAction="#buttonSQRT" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-buttonOP" stylesheets="@style.css" text="√">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="273.0" layoutY="157.0" mnemonicParsing="false" onAction="#buttonBackspace" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-buttonOP" stylesheets="@style.css">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="24.0" fitWidth="33.0" layoutX="292.0" layoutY="171.0">
+         <image>
+            <Image url="@imageBackspace.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="103.0" layoutY="93.0" mnemonicParsing="false" onAction="#buttonHistoric" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-buttonOP" stylesheets="@style.css" text="H">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="18.0" layoutY="93.0" mnemonicParsing="false" onAction="#buttonPercent" prefHeight="49.0" prefWidth="70.0" styleClass="gradient-buttonOP" stylesheets="@style.css" text="\%">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

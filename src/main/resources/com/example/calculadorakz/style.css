@@ -1,0 +1,11 @@
+.gradient-anchor{
+    -fx-background-color: linear-gradient(to top, #AD5CFF, #6a0dad );
+}
+
+.gradient-button{
+    -fx-background-color: linear-gradient(to top,#FFA500 , #FFD700)
+}
+
+.gradient-buttonOP{
+    -fx-background-color: linear-gradient(to top, #bf5d20,#fabe00 )
+}
