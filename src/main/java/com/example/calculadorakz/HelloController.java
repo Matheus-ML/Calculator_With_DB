@@ -2,8 +2,11 @@ package com.example.calculadorakz;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 
 public class HelloController {
@@ -16,6 +19,22 @@ public class HelloController {
 
     @FXML
     void buttonHistoric(ActionEvent event) {
+        TextArea text = new TextArea();
+        text.setEditable(false);
+        text.setWrapText(true);
+        text.setText(gerarHistoric());
+
+        Scene scene = new Scene(text, 400, 300);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private String gerarHistoric() {
+        StringBuilder txtHistoric = new StringBuilder();
+        txtHistoric.append("Histórico de Resultados");
+
+        return txtHistoric.toString();
     }
 
     @FXML
