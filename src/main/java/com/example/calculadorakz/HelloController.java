@@ -22,19 +22,13 @@ public class HelloController {
         TextArea text = new TextArea();
         text.setEditable(false);
         text.setWrapText(true);
-        text.setText(gerarHistoric());
+        text.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-font-family: 'Arial';");
+        text.setText(FunctionDB.getHistoric());
 
-        Scene scene = new Scene(text, 400, 300);
+        Scene scene = new Scene(text, 250, 300);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
-    }
-
-    private String gerarHistoric() {
-        StringBuilder txtHistoric = new StringBuilder();
-        txtHistoric.append("Histórico de Resultados");
-
-        return txtHistoric.toString();
     }
 
     @FXML

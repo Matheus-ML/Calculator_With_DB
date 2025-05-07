@@ -2,6 +2,7 @@ package com.example.calculadorakz;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class FunctionDB {
@@ -22,22 +23,27 @@ public class FunctionDB {
         }
     }
 
-    public static void getHistoric(){
-        String getHistoricSQL = "SELECT nr_calc, nr_expression FROM historic GROUP BY cd_historic" ;
-
+    public static String getHistoric(){
+        String getHistoricSQL = "SELECT cd_historic, nr_expression, nr_calc FROM historic ORDER BY cd_historic" ;
+        StringBuilder historic = new StringBuilder();
         try(Connection conectar = ConnectionDB.conectar()){
             assert conectar != null;
-            try(PreparedStatement stmt = conectar.prepareStatement(getHistoricSQL)){
+            try(PreparedStatement stmt = conectar.prepareStatement(getHistoricSQL);ResultSet rs = stmt.executeQuery()){
 
-                StringBuilder historic = new StringBuilder();
-                historic.append(stmt);
-                System.out.println(historic);
+                while(rs.next()){
+                    String cd =rs.getString("cd_historic");
+                    String calc = rs.getString("nr_calc");
+                    String expression = rs.getString("nr_expression");
+
+                    historic.append(cd).append("|  ").append(expression).append(" ").append(calc).append("\n");
+                }
+
 
             }
         }catch (SQLException e){
             HelloController.alert("Error","Erro ao inserir: " + e.getMessage());
         }
-
+        return historic.toString();
     }
 
     public static void main(String[] args) {
