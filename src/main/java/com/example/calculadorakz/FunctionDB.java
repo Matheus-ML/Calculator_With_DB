@@ -8,9 +8,9 @@ public class FunctionDB {
     public static void input(String nr_calc, String nr_expression) {
         String sqlInput = "INSERT INTO historic (nr_calc,nr_expression) VALUES (?, ?)";
 
-        try (Connection conn = ConnectionDB.conectar()) {
-            assert conn != null;
-            try (PreparedStatement stmt = conn.prepareStatement(sqlInput)) {
+        try (Connection conectar = ConnectionDB.conectar()) {
+            assert conectar != null;
+            try (PreparedStatement stmt = conectar.prepareStatement(sqlInput)) {
 
                 stmt.setString(1, nr_calc);
                 stmt.setString(2, nr_expression);
@@ -18,12 +18,30 @@ public class FunctionDB {
 
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao inserir: " + e.getMessage());
+            HelloController.alert("Error","Erro ao inserir: " + e.getMessage());
         }
     }
 
     public static void getHistoric(){
+        String getHistoricSQL = "SELECT nr_calc, nr_expression FROM historic GROUP BY cd_historic" ;
 
+        try(Connection conectar = ConnectionDB.conectar()){
+            assert conectar != null;
+            try(PreparedStatement stmt = conectar.prepareStatement(getHistoricSQL)){
+
+                StringBuilder historic = new StringBuilder();
+                historic.append(stmt);
+                System.out.println(historic);
+
+            }
+        }catch (SQLException e){
+            HelloController.alert("Error","Erro ao inserir: " + e.getMessage());
+        }
+
+    }
+
+    public static void main(String[] args) {
+        getHistoric();
     }
 
 }
