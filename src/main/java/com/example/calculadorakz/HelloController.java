@@ -219,7 +219,7 @@ public class HelloController {
         }
     }
 
-    public void alert(String title, String text) {
+    public static void alert(String title, String text) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
