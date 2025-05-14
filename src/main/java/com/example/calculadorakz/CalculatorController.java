@@ -2,7 +2,7 @@ package com.example.calculadorakz;
 
 public class CalculatorController {
 
-    public double calcular(double numberOne, double numberTwo, String operationMath) {
+    public double calculate(double numberOne, double numberTwo, String operationMath) {
         return switch (operationMath) {
             case "+" -> numberOne + numberTwo;
             case "-" -> numberOne - numberTwo;
@@ -13,7 +13,7 @@ public class CalculatorController {
     }
 
     //Calcula a Potência e Raiz quadrada, quando não tiver operação matemática, ou seja, um calculo de apenas 1 número.
-    public double calcularSQ(double numberOne, String operationMath) {
+    public double calculateSQ(double numberOne, String operationMath) {
         return switch (operationMath) {
             case "x²" -> numberOne * numberOne;
             case "√" -> Math.sqrt(numberOne);
@@ -22,18 +22,18 @@ public class CalculatorController {
     }
 
     //Calcula Potência e Raiz quadrada, quando for ser usada após uma operação matemática como soma e multiplicação.
-    public double calcular_SQ(double numberOne, double numberTwo, String operationMath, String operationSQ) {
+    public double calculate_SQ(double numberOne, double numberTwo, String operationMath, String operationSQ) {
         return switch (operationMath) {
-            case "+" -> numberOne + calcularSQ(numberTwo, operationSQ);
-            case "-" -> numberOne - calcularSQ(numberTwo, operationSQ);
-            case "/" -> numberOne / calcularSQ(numberTwo, operationSQ);
-            case "*" -> numberOne * calcularSQ(numberTwo, operationSQ);
+            case "+" -> numberOne + calculateSQ(numberTwo, operationSQ);
+            case "-" -> numberOne - calculateSQ(numberTwo, operationSQ);
+            case "/" -> numberOne / calculateSQ(numberTwo, operationSQ);
+            case "*" -> numberOne * calculateSQ(numberTwo, operationSQ);
             default -> 0;
         };
 
     }
 
-    public double calcularPerCent(double numberOne, double numberTwo, String operationMath) {
+    public double calculatePerCent(double numberOne, double numberTwo, String operationMath) {
         return switch (operationMath) {
             case "+" -> numberOne + (numberTwo / 100 * numberOne);
             case "-" -> numberOne - (numberTwo / 100 * numberOne);

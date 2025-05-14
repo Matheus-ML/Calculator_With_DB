@@ -9,7 +9,7 @@ public class FunctionDB {
     public static void input(String nr_calc, String nr_expression) {
         String sqlInput = "INSERT INTO historic (nr_calc,nr_expression) VALUES (?, ?)";
 
-        try (Connection conectar = ConnectionDB.conectar()) {
+        try (Connection conectar = ConnectionDB.connect()) {
             assert conectar != null;
             try (PreparedStatement stmt = conectar.prepareStatement(sqlInput)) {
 
@@ -19,19 +19,19 @@ public class FunctionDB {
 
             }
         } catch (SQLException e) {
-            HelloController.alert("Error","Erro ao inserir: " + e.getMessage());
+            HelloController.alert("Error", "Erro ao inserir: " + e.getMessage());
         }
     }
 
-    public static String getHistoric(){
-        String getHistoricSQL = "SELECT cd_historic, nr_expression, nr_calc FROM historic ORDER BY cd_historic" ;
+    public static String getHistoric() {
+        String getHistoricSQL = "SELECT cd_historic, nr_expression, nr_calc FROM historic ORDER BY cd_historic";
         StringBuilder historic = new StringBuilder();
-        try(Connection conectar = ConnectionDB.conectar()){
+        try (Connection conectar = ConnectionDB.connect()) {
             assert conectar != null;
-            try(PreparedStatement stmt = conectar.prepareStatement(getHistoricSQL);ResultSet rs = stmt.executeQuery()){
+            try (PreparedStatement stmt = conectar.prepareStatement(getHistoricSQL); ResultSet rs = stmt.executeQuery()) {
 
-                while(rs.next()){
-                    String cd =rs.getString("cd_historic");
+                while (rs.next()) {
+                    String cd = rs.getString("cd_historic");
                     String calc = rs.getString("nr_calc");
                     String expression = rs.getString("nr_expression");
 
@@ -40,8 +40,8 @@ public class FunctionDB {
 
 
             }
-        }catch (SQLException e){
-            HelloController.alert("Error","Erro ao inserir: " + e.getMessage());
+        } catch (SQLException e) {
+            HelloController.alert("Error", "Erro ao inserir: " + e.getMessage());
         }
         return historic.toString();
     }

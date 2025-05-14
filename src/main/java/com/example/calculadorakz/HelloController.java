@@ -1,6 +1,5 @@
 package com.example.calculadorakz;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -18,7 +17,7 @@ public class HelloController {
 
 
     @FXML
-    void buttonHistoric(ActionEvent event) {
+    void buttonHistoric() {
         TextArea text = new TextArea();
         text.setEditable(false);
         text.setWrapText(true);
@@ -38,7 +37,7 @@ public class HelloController {
     private TextField txtResults;
 
     @FXML
-    void buttonBackspace(ActionEvent event) {
+    void buttonBackspace() {
         try {
             String text = txtResults.getText();
             String backspace = text.substring(0, text.length() - 1);
@@ -49,14 +48,14 @@ public class HelloController {
     }
 
     @FXML
-    void buttonC(ActionEvent event) {
+    void buttonC() {
         setNullTxt();
         posteriorNumber.setText("");
         clearAtributes();
     }
 
     @FXML
-    void buttonPercent(ActionEvent event) {
+    void buttonPercent() {
         numberTwo = Double.parseDouble(txtResults.getText());
 
         if (operationMath.equals("/") && numberTwo == 0) {
@@ -64,138 +63,138 @@ public class HelloController {
             setNullTxt();
             return;
         }
-        txtResults.setText(String.valueOf(controller.calcularPerCent(numberOne, numberTwo, operationMath)));
+        txtResults.setText(String.valueOf(controller.calculatePerCent(numberOne, numberTwo, operationMath)));
         posteriorNumber.setText((numberOne) + operationMath + numberTwo + "%");
     }
 
     @FXML
-    void buttonEqual(ActionEvent event) {
+    void buttonEqual() {
         numberTwo = Double.parseDouble(txtResults.getText());
 
         if (operationMath.equals("/") && numberTwo == 0) {
             alert("Error", "Zero não pode ser o Divisor, escolha outro número!");
             return;
         }
-        txtResults.setText(String.valueOf(controller.calcular(numberOne, numberTwo, operationMath)));
-        posteriorNumber.setText((numberOne) + operationMath + numberTwo + "=");
+        txtResults.setText(String.valueOf(controller.calculate(numberOne, numberTwo, operationMath)));
+        posteriorNumber.setText((numberOne) + operationMath + numberTwo + " =");
         FunctionDB.input(txtResults.getText(), posteriorNumber.getText());
         clearAtributes();
     }
 
     @FXML
-    void buttonPow(ActionEvent event) {
+    void buttonPow() {
         operationSQ = "x²";
         if (operationMath.isEmpty()) {
             converse();
             posteriorNumber.setText(numberOne + "²");
-            txtResults.setText(String.valueOf(controller.calcularSQ(numberOne, operationSQ)));
+            txtResults.setText(String.valueOf(controller.calculateSQ(numberOne, operationSQ)));
             clearAtributes();
         } else {
             numberOne = Double.parseDouble(posteriorNumber.getText());
             numberTwo = Double.parseDouble(txtResults.getText());
             posteriorNumber.setText(numberOne + operationMath + numberTwo + "²=");
-            txtResults.setText(String.valueOf(controller.calcular_SQ(numberOne, numberTwo, operationMath, operationSQ)));
+            txtResults.setText(String.valueOf(controller.calculate_SQ(numberOne, numberTwo, operationMath, operationSQ)));
             clearAtributes();
         }
         FunctionDB.input(txtResults.getText(), posteriorNumber.getText());
     }
 
     @FXML
-    void buttonSQRT(ActionEvent event) {
+    void buttonSQRT() {
         operationSQ = "√";
         if (operationMath.isEmpty()) {
             converse();
             posteriorNumber.setText("√" + numberOne);
-            txtResults.setText(String.valueOf(controller.calcularSQ(numberOne, operationSQ)));
+            txtResults.setText(String.valueOf(controller.calculateSQ(numberOne, operationSQ)));
             clearAtributes();
         } else {
             numberOne = Double.parseDouble(posteriorNumber.getText());
             numberTwo = Double.parseDouble(txtResults.getText());
             posteriorNumber.setText(numberOne + operationMath + "√" + numberTwo + "=");
             System.out.println("Operacao M" + operationMath + "\nOperacao SQ" + operationSQ);
-            txtResults.setText(String.valueOf(controller.calcular_SQ(numberOne, numberTwo, operationMath, operationSQ)));
-            System.out.println(controller.calcular_SQ(numberOne, numberTwo, operationMath, operationSQ));
+            txtResults.setText(String.valueOf(controller.calculate_SQ(numberOne, numberTwo, operationMath, operationSQ)));
+            System.out.println(controller.calculate_SQ(numberOne, numberTwo, operationMath, operationSQ));
             clearAtributes();
         }
         FunctionDB.input(txtResults.getText(), posteriorNumber.getText());
     }
 
     @FXML
-    void buttonDiv(ActionEvent event) {
+    void buttonDiv() {
         converse();
         operationMath = "/";
     }
 
     @FXML
-    void buttonMulti(ActionEvent event) {
+    void buttonMulti() {
         converse();
         operationMath = "*";
     }
 
     @FXML
-    void buttonSub(ActionEvent event) {
+    void buttonSub() {
         converse();
         operationMath = "-";
     }
 
     @FXML
-    void buttonSum(ActionEvent event) {
+    void buttonSum() {
         converse();
         operationMath = "+";
     }
 
     @FXML
-    void buttonPoint(ActionEvent event) {
+    void buttonPoint() {
         txtResults.appendText(".");
     }
 
     @FXML
-    void buttonEight(ActionEvent event) {
+    void buttonEight() {
         txtResults.appendText("8");
     }
 
     @FXML
-    void buttonFive(ActionEvent event) {
+    void buttonFive() {
         txtResults.appendText("5");
     }
 
     @FXML
-    void buttonFour(ActionEvent event) {
+    void buttonFour() {
         txtResults.appendText("4");
     }
 
     @FXML
-    void buttonNine(ActionEvent event) {
+    void buttonNine() {
         txtResults.appendText("9");
     }
 
     @FXML
-    void buttonOne(ActionEvent event) {
+    void buttonOne() {
         txtResults.appendText("1");
     }
 
     @FXML
-    void buttonSeven(ActionEvent event) {
+    void buttonSeven() {
         txtResults.appendText("7");
     }
 
     @FXML
-    void buttonSix(ActionEvent event) {
+    void buttonSix() {
         txtResults.appendText("6");
     }
 
     @FXML
-    void buttonThree(ActionEvent event) {
+    void buttonThree() {
         txtResults.appendText("3");
     }
 
     @FXML
-    void buttonTwo(ActionEvent event) {
+    void buttonTwo() {
         txtResults.appendText("2");
     }
 
     @FXML
-    void buttonZero(ActionEvent event) {
+    void buttonZero() {
         txtResults.appendText("0");
     }
 

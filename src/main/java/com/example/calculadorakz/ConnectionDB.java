@@ -6,14 +6,13 @@ import java.sql.SQLException;
 
 public class ConnectionDB {
 
-    public static Connection conectar() {
+    public static Connection connect() {
         String url = "jdbc:mysql://localhost:3306/calculator";
         String user = "root";
         String password = "";
 
         try {
             Connection conectar = DriverManager.getConnection(url, user, password);
-            System.out.println("Conectado com sucesso!");
             return conectar;
         } catch (SQLException e) {
             System.out.println("Não foi possível: " + e.getMessage());
