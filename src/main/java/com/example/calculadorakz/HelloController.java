@@ -9,11 +9,11 @@ import javafx.stage.Stage;
 
 
 public class HelloController {
-    double numberOne = 0;
-    double numberTwo = 0;
-    String operationMath = "";
-    String operationSQ;
-    CalculatorController controller = new CalculatorController();
+    private double numberOne = 0;
+    private double numberTwo = 0;
+    private String operationMath = "";
+    private String operationSQ;
+    private CalculatorController controller = new CalculatorController();
 
 
     @FXML
@@ -56,44 +56,44 @@ public class HelloController {
 
     @FXML
     void buttonPercent() {
-        numberTwo = Double.parseDouble(txtResults.getText());
+        setNumberTwo(Double.parseDouble(txtResults.getText()));
 
-        if (operationMath.equals("/") && numberTwo == 0) {
+        if (getOperationMath().equals("/") && getNumberTwo() == 0) {
             alert("Error", "Zero não pode ser o Divisor, escolha outro número!");
             setNullTxt();
             return;
         }
-        txtResults.setText(String.valueOf(controller.calculatePerCent(numberOne, numberTwo, operationMath)));
-        posteriorNumber.setText((numberOne) + operationMath + numberTwo + "%");
+        txtResults.setText(String.valueOf(getController().calculatePerCent(getNumberOne(), getNumberTwo(), getOperationMath())));
+        posteriorNumber.setText((getNumberOne()) + getOperationMath() + getNumberTwo() + "%");
     }
 
     @FXML
     void buttonEqual() {
-        numberTwo = Double.parseDouble(txtResults.getText());
+        setNumberTwo(Double.parseDouble(txtResults.getText()));
 
-        if (operationMath.equals("/") && numberTwo == 0) {
+        if (getOperationMath().equals("/") && getNumberTwo() == 0) {
             alert("Error", "Zero não pode ser o Divisor, escolha outro número!");
             return;
         }
-        txtResults.setText(String.valueOf(controller.calculate(numberOne, numberTwo, operationMath)));
-        posteriorNumber.setText((numberOne) + operationMath + numberTwo + " =");
+        txtResults.setText(String.valueOf(getController().calculate(getNumberOne(), getNumberTwo(), getOperationMath())));
+        posteriorNumber.setText((getNumberOne()) + getOperationMath() + getNumberTwo() + " =");
         FunctionDB.input(txtResults.getText(), posteriorNumber.getText());
         clearAtributes();
     }
 
     @FXML
     void buttonPow() {
-        operationSQ = "x²";
-        if (operationMath.isEmpty()) {
+        setOperationSQ("x²");
+        if (getOperationMath().isEmpty()) {
             converse();
-            posteriorNumber.setText(numberOne + "²");
-            txtResults.setText(String.valueOf(controller.calculateSQ(numberOne, operationSQ)));
+            posteriorNumber.setText(getNumberOne() + "²");
+            txtResults.setText(String.valueOf(getController().calculateSQ(getNumberOne(), getOperationSQ())));
             clearAtributes();
         } else {
-            numberOne = Double.parseDouble(posteriorNumber.getText());
-            numberTwo = Double.parseDouble(txtResults.getText());
-            posteriorNumber.setText(numberOne + operationMath + numberTwo + "²=");
-            txtResults.setText(String.valueOf(controller.calculate_SQ(numberOne, numberTwo, operationMath, operationSQ)));
+            setNumberOne(Double.parseDouble(posteriorNumber.getText()));
+            setNumberTwo(Double.parseDouble(txtResults.getText()));
+            posteriorNumber.setText(getNumberOne() + getOperationMath() + getNumberTwo() + "²=");
+            txtResults.setText(String.valueOf(getController().calculate_SQ(getNumberOne(), getNumberTwo(), getOperationMath(), getOperationSQ())));
             clearAtributes();
         }
         FunctionDB.input(txtResults.getText(), posteriorNumber.getText());
@@ -101,19 +101,19 @@ public class HelloController {
 
     @FXML
     void buttonSQRT() {
-        operationSQ = "√";
-        if (operationMath.isEmpty()) {
+        setOperationSQ("√");
+        if (getOperationMath().isEmpty()) {
             converse();
-            posteriorNumber.setText("√" + numberOne);
-            txtResults.setText(String.valueOf(controller.calculateSQ(numberOne, operationSQ)));
+            posteriorNumber.setText("√" + getNumberOne());
+            txtResults.setText(String.valueOf(getController().calculateSQ(getNumberOne(), getOperationSQ())));
             clearAtributes();
         } else {
-            numberOne = Double.parseDouble(posteriorNumber.getText());
-            numberTwo = Double.parseDouble(txtResults.getText());
-            posteriorNumber.setText(numberOne + operationMath + "√" + numberTwo + "=");
-            System.out.println("Operacao M" + operationMath + "\nOperacao SQ" + operationSQ);
-            txtResults.setText(String.valueOf(controller.calculate_SQ(numberOne, numberTwo, operationMath, operationSQ)));
-            System.out.println(controller.calculate_SQ(numberOne, numberTwo, operationMath, operationSQ));
+            setNumberOne(Double.parseDouble(posteriorNumber.getText()));
+            setNumberTwo(Double.parseDouble(txtResults.getText()));
+            posteriorNumber.setText(getNumberOne() + getOperationMath() + "√" + getNumberTwo() + "=");
+            System.out.println("Operacao M" + getOperationMath() + "\nOperacao SQ" + getOperationSQ());
+            txtResults.setText(String.valueOf(getController().calculate_SQ(getNumberOne(), getNumberTwo(), getOperationMath(), getOperationSQ())));
+            System.out.println(getController().calculate_SQ(getNumberOne(), getNumberTwo(), getOperationMath(), getOperationSQ()));
             clearAtributes();
         }
         FunctionDB.input(txtResults.getText(), posteriorNumber.getText());
@@ -122,25 +122,25 @@ public class HelloController {
     @FXML
     void buttonDiv() {
         converse();
-        operationMath = "/";
+        setOperationMath("/");
     }
 
     @FXML
     void buttonMulti() {
         converse();
-        operationMath = "*";
+        setOperationMath("*");
     }
 
     @FXML
     void buttonSub() {
         converse();
-        operationMath = "-";
+        setOperationMath("-");
     }
 
     @FXML
     void buttonSum() {
         converse();
-        operationMath = "+";
+        setOperationMath("+");
     }
 
     @FXML
@@ -204,8 +204,8 @@ public class HelloController {
 
     void converse() {
         try {
-            numberOne = Double.parseDouble(txtResults.getText());
-            posteriorNumber.setText(String.valueOf(numberOne));
+            setNumberOne(Double.parseDouble(txtResults.getText()));
+            posteriorNumber.setText(String.valueOf(getNumberOne()));
             setNullTxt();
         } catch (NumberFormatException e) {
             System.out.println("Não tem número, coloca algo aí por favor?");
@@ -221,9 +221,45 @@ public class HelloController {
     }
 
     void clearAtributes() {
-        numberOne = 0;
-        numberTwo = 0;
-        operationMath = "";
-        operationSQ = "";
+        setNumberOne(0);
+        setNumberTwo(0);
+        setOperationMath("");
+        setOperationSQ("");
+    }
+
+    public double getNumberOne() {
+        return numberOne;
+    }
+
+    public void setNumberOne(double numberOne) {
+        this.numberOne = numberOne;
+    }
+
+    public double getNumberTwo() {
+        return numberTwo;
+    }
+
+    public void setNumberTwo(double numberTwo) {
+        this.numberTwo = numberTwo;
+    }
+
+    public String getOperationMath() {
+        return operationMath;
+    }
+
+    public void setOperationMath(String operationMath) {
+        this.operationMath = operationMath;
+    }
+
+    public String getOperationSQ() {
+        return operationSQ;
+    }
+
+    public void setOperationSQ(String operationSQ) {
+        this.operationSQ = operationSQ;
+    }
+
+    public CalculatorController getController() {
+        return controller;
     }
 }

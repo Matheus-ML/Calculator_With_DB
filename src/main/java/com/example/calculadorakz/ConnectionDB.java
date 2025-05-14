@@ -7,7 +7,8 @@ import java.sql.SQLException;
 public class ConnectionDB {
 
     public static Connection connect() {
-        String url = "jdbc:mysql://localhost:3306/calculator";
+        String url = "jdbc:mysql://localhost:3306/calculator?useUnicode=true&characterEncoding=utf8mb4";
+
         String user = "root";
         String password = "";
 
